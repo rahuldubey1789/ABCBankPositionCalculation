@@ -1,0 +1,13 @@
+<configuration scan="false" scanPeriod="30 seconds">
+	<property name="LOGDIR" value="./log" />
+	<appender name="ABC"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGDIR}/${LOGFILE:-ABC}.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%-5level] %msg %n</pattern>
+		</encoder>
+	</appender>
+	<root level="${LOGLEVEL:-debug}">
+		<appender-ref ref="ABC" />
+	</root>
+</configuration>
